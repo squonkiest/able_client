@@ -14,7 +14,7 @@ function App() {
     }
 
     function buyNow() {
-        axios.post(baseUrl + "shop/buy-now")
+        axios.post(baseUrl + "shop/buy-now", {}, { withCredentials: true })
             .then(() => {
                 toast("Successful");
             })
@@ -27,7 +27,7 @@ function App() {
     useEffect(() => {
       const isButtonExpExposed = localStorage.getItem("isExposed_button_variant");
       if (!isButtonExpExposed){
-        axios.post(baseUrl + "shop/buy-now-exposed").then(() => {
+        axios.post(baseUrl + "shop/buy-now-exposed", [], { withCredentials: true }).then(() => {
           toast("Exposed");
         }).catch((err) => {
           console.log(err);

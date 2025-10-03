@@ -35,12 +35,12 @@ export default {
     let newCookies: string[] = [];
     if (!userId) {
       userId = crypto.randomUUID();
-      newCookies.push(`user_id=${userId}; Path=/; HttpOnly; SameSite=Lax`);
+      newCookies.push(`user_id=${userId}; Path=/; SameSite=None`);
     }
 
     if (!variant) {
       variant = Math.random() < 0.5 ? "A" : "B";
-      newCookies.push(`button_variant=${variant}; Path=/; HttpOnly; SameSite=Lax`);
+      newCookies.push(`button_variant=${variant}; Path=/; SameSite=None`);
 
       // Call backend to register assignment
       ctx.waitUntil(fetch(`${env.API_BASE_URL}/api/shop/buy-now-assigned`, {
